@@ -1,8 +1,12 @@
-const admin = require('../Models/adminSchema');
+// const admin = require('../Models/adminSchema')
 const users = require('../Models/userSchema')
 const jwt = require('jsonwebtoken')
 
 
+
+exports.generateOTP = async(req,res)=>{
+    
+}
 
 
 //Register Logic
@@ -31,13 +35,9 @@ exports.loginAPI = async(req,res)=>{
     console.log("Inside Login API");
     const {email,password} = req.body
     const existingUser = await users.findOne({email,password})
-    const registeredAdmin = await admin.findOne({email,password})
+    // const registeredAdmin = await admin.findOne({email,password})
     try{
-
-         if(registeredAdmin){
-            res.status(200).json("Admin Logged successfully")
-        }
-        else if(existingUser){
+         if(existingUser){
             const token = jwt.sign({userId:existingUser._id},process.env.jwtKey)
             console.log(token);
             
