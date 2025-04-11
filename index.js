@@ -10,17 +10,14 @@ const cors = require('cors')
 const db = require('./DB/connection')
 
 const router = require('./Routes/router')
-// const ApplicationMiddleware = require('./Middlewares/Applicationmiddleware')
 
 
-// const twilioRouter = require('./src/routes/twilio-sms')
 // 2 create an application using express
 const dmServer = express()
 
 // 6 Use
 dmServer.use(cors())
 dmServer.use(express.json())
-// dmServer.use(ApplicationMiddleware)
 dmServer.use(router)
 
 

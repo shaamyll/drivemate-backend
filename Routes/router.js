@@ -3,8 +3,14 @@ const userController = require('../Controllers/userController')
 const driverController = require('../Controllers/driverController')
 const BookingController = require('../Controllers/BookingController')
 const jwtMiddleware = require('../Middlewares/jwtMiddleware')
+const twilio = require('../Controllers/twilio-sms')
 
 const router = express.Router()
+
+router.post('/api/sendOtp',twilio.sendOtp)
+
+router.post('/api/verifyOtp',twilio.verifyOtp)
+
 
 router.post('/api/register',userController.registerAPI)
 
