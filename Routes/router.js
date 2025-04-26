@@ -4,6 +4,7 @@ const driverController = require('../Controllers/driverController')
 const BookingController = require('../Controllers/BookingController')
 const jwtMiddleware = require('../Middlewares/jwtMiddleware')
 const twilio = require('../Controllers/twilio-sms')
+const PaymentController = require('../Controllers/PaymentController')
 
 const router = express.Router()
 
@@ -54,6 +55,11 @@ router.get('/api/bookings/:userId', BookingController.getBookingsByUser);
 
 //Accept driver
 router.patch('/api/drivers/updateStatus/:driverId',driverController.updateDriverStatusAPI);
+
+router.post('/api/paymentOrder', PaymentController.createOrder);
+
+router.post('/api/paymentOrder/verify', PaymentController.verifyPayment);
+
 
 
 module.exports = router
